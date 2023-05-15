@@ -1,5 +1,207 @@
 ---
+import CopyText from '../copy.astro';
 ---
+
+<style>
+  @font-face { 
+    font-family:'Good Unicorn';
+    src: url('/good-unicorn.ttf') format('truetype');
+    font-display: swap;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJPkq1umA.woff2) format('woff2');
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkq0.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  img {
+    max-width: 100%;
+    max-height: auto;
+  }
+  a {
+    color: #ba2228;
+  }
+  p {
+    line-height: 1.25;
+  }
+  .popover-overlay {
+    background-color: rgba(0,0,0,0.1);
+    position: fixed;
+    inset: 0;
+    padding: 1rem;
+    color: #ba2228;
+    display: flex;
+    z-index: 0;
+    justify-content: center;
+    transition: opacity 0.267s ease-out;
+  }
+  .popover-overlay.hide {
+    opacity: 0;
+  }
+  .popover {
+    position: relative;
+    background-color: #fcfaea;
+    border-radius: 1rem;
+    width: 100%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);
+    padding: clamp(1rem, 8vw, 5rem);
+    padding-bottom: clamp(2rem, 2vw, 3rem);
+    box-sizing: border-box;
+    overflow-y: scroll;
+    z-index: 1;
+    max-width: 786px;
+    transition: filter 0.287s ease-in, transform 0.287s ease-in;
+    transform-origin: right top;
+  }
+  .popover::-webkit-scrollbar {
+    display: none;
+  }
+  .hide .popover {
+    filter: blur(20px);
+    transform: scale(0);
+  }
+  .popover-close {
+    position: sticky;
+    top: 0;
+    left: calc(100% - 2.5rem);
+    text-decoration: underline;
+    text-shadow: 0 0 4px #999;
+    color: #444;
+    background-color: #fcfaea99;
+    box-sizing: border-box;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-right: -0.75rem;
+    display: block;
+    width: min-content;
+    padding-top: 0.5rem;
+  }
+  .popover-close svg {
+    width: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .popover-close {
+      left: 90%;
+    }
+  }
+  .cover {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    gap: 0.125rem;
+    margin-top: clamp(0.5rem, 5vw, 3rem);
+    max-width: 580px;
+    margin-inline: auto;
+  }
+  .title {
+    overflow: hidden;
+    text-align: center;
+  }
+  .title img {
+    display: block;
+    margin-inline: auto;
+  }
+  .title svg {
+    font-family: 'Good Unicorn';
+    font-size: 1rem;
+    max-width: 100%;
+    height: 100%;
+    margin-left: 6%;
+  }
+  .title span {
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .intro {
+    font-family: 'Good Unicorn';
+    margin-top: clamp(2rem, 4vw, 4rem);
+    letter-spacing: 1px;
+  }
+  @media (min-width: 540px) {
+    .intro {
+      margin-bottom: clamp(0px, 4vw, 2rem);
+    }
+  }
+  .intro span {
+    font-size: clamp(1.75rem, 3vw, 2.2rem);
+    display: block;
+    text-align: center;
+  }
+  .intro .heading {
+    font-size: clamp(42px, 4.8vw, 3.5rem);
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+  }
+  .body-text {
+    box-sizing: border-box;
+    max-width: 580px;
+    margin-inline: auto;
+    font-family: 'Lora';
+  }
+  .ammu {
+    max-height: clamp(9rem, 37vw, 18rem);
+    margin-inline: auto;
+    float: right;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+  }
+  .soon-heading, .meet-heading {
+    font-family: 'Good Unicorn';
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-top: 3rem;
+    letter-spacing: 3px;
+    text-align: center;
+    font-weight: 400;
+  }
+  .soon-heading {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  .CKT-portrait {
+    border-radius: 5rem 5rem 0 0;
+    max-width: 80%;
+    max-height: 380px;
+    display: block;
+    margin-inline: auto;
+    box-shadow: 0 2px 7px #00000033;
+  }
+  @media (min-width: 650px) {
+    .CKT-portrait {
+      float: left;
+      margin-right: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+  .flipbook {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    max-width: 580px;
+    margin-inline: auto;
+  }
+  .flipbook img:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+  .flipbook img:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+  @media (min-width: 687px) {
+    .flipbook img:last-child,
+    .flipbook img:first-child {
+      border-radius: 0;
+    }
+  }
+</style>
 
 <html lang="en">
 	<head>
@@ -10,6 +212,77 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+    <CopyText />
+    <section class="popover-overlay">
+      <div class="popover">
+        <span class="popover-close">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+
+        </span>
+
+        <h2 class="title">
+          <svg width="489.70377" height="150.488998" viewBox="0 0 100.732037 25.883562" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <text fill="currentColor" style="font-weight:normal;line-height:1.25,stroke:none;" id="text790"><textPath xlink:href="#path994" id="textPath1113"><tspan id="tspan788">Ammu's Treasures</tspan></textPath></text>
+              <path style="fill:none;stroke:none;" d="M 2.8472408,23.277738 C 31.458835,8.4991322 59.976879,8.7144992 85.563619,23.321538" id="path994" />
+          </svg>
+          <span>Ammu's Treasures</span>
+        </h2>
+
+        <div class="cover">
+          <img src="/Ammus-Treasures-cover.webp" alt="Chandrika & Ammu">
+          <img src="/CKT-Ammu.webp" alt="Ammu's Treasures Cover">
+        </div>
+        <div class="intro">
+          <span class="heading">coming Summer, 2023</span>
+          <span>Ammu has a hug for you . . .</span>
+          <span>Ammu has a song for you . . .</span>
+          <span>Ammu's door is always open . . .</span>
+        </div>
+
+        <div class="body-text">
+
+          <img class="ammu" src="/ammu-2.webp" alt="Ammu" loading="lazy">
+
+          <p>Ammu is a delicious term of endearment used in many part's of India. Literally, Ammu means happiness . Ammu means sweetness. Ammu means purity. Ammu is what Chandrika's grandchildren call her.</p>
+
+          <p>Inspired by constantly singing to her grandchildren, Chandrika Tandon's Ammu's Treasures is a gift of intergenerational love and wisdom, with profound messages for everyday living.</p>
+
+          <p> A three-volume omnibus of 35 songs and 21 chants, Ammu's Treasures invites its listeners to reminisce or make new memories with traditional folktunes and familiar popular songs and poems, which were a part of Chandrika's childhood years. These songs speak of faraway places, in different genres and languages, with varied arrangements. They are meant for quiet times, happy times, and any time. This treasury of music also includes ancient Vedic chants set to Indian scales, aimed to soothe and relax.
+          </p>
+          
+          <p>Adding their incredible artistry to complex arrangements, Ammu's Treasures features many maestros, including Cyro Baptista, Martin Bejerano, Purbayan Chatterjee, Rakesh Chaurasia, Béla Fleck, Eugene Friesen, Maeve Gilchrist, Jamey Haddad, Bobbie Keyes, Howard Levy, Romero Lubambo, Marcus Rojas, Dave Schroeder, Michael WardBergeman, Kenny Werner, the Czech National Symphony Orchestra, Teese Gohl, Mirek Vana, John Kiehl, Scott Cannizarro, and more. Marc Lumer and Bob Spang contributed their talents to beautiful accompanying lyric videos.</p>
+
+          <p>Ammu's Treasures is a hug for the world, a message of Love, Light, Laughter for all ages.</p>
+        </div>
+
+        <h2 class="meet-heading">Meet Chandrika Tandon</h2>
+
+        <div class="body-text">
+
+          <img class="CKT-portrait" src="/CKT-portrait.webp" alt="" loading="lazy">
+
+          <p>Chandrika is a Grammy-nominated artist and globally recognized business leader with a stated mission to elevate human happiness through music and education - for economic and emotional well -being.</p>
+
+          <p>She has previously released four albums (<em>Shivoham - The Quest, Soul Call, Soul March, Soul Mantra</em>) and conducted numerous benefit concerts on world stages for global peace, meditation, and yoga in schools, focused on the ancient wisdom of India and her own journey. She supports several efforts on human flourishing.</p>
+
+          <p>Chandrika chairs the Board of NYU Tandon School of Engineering, named after her generous gift. She is the Vice Chairman of the NYU Board of Trustees, a Trustee of NYU Langone Health, and a Board member of the NYU Stern School of Business. Chandrika is the recipient of several awards, including the Gallatin Medal, NYU's highest honor, the Walter Nichols Medal for leadership and integrity, and the Polytechnic Medal, recognizing her contribution to science and engineering. She was inducted into the Horatio Alger Society of Great Americans and has received the Ellis Island Medal of Honor. She has been profiled on television, radio, and in print, including CNBC's <a href="https://youtu.be/DySbG3Ca3eE" target="_blank"><em>The Brave Ones</em></a> series.</p>
+        </div>
+
+        <h2 class="soon-heading">Soon, visit Ammu's world</h2>
+
+        <div class="flipbook">
+          <img src="/flipbook-1.webp" alt="" loading="lazy">
+          <img src="/flipbook-2.webp" alt="" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+<script>
+  import "../scripts/show.js";
+</script>
+
 	</body>
 </html>
