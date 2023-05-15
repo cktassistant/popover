@@ -1,4 +1,5 @@
 document.body.style.position = 'fixed';
+document.body.style.width = '100%';
 
 const clickOutside = (e) => {
   if (e.target.classList.contains('popover-overlay')) {
@@ -16,6 +17,7 @@ const closeOnEscape = (e) => {
 
 const closeDialog = () => {
   document.body.style.position = '';
+  document.body.style.width = '';
   document.querySelector('.popover-overlay').classList.add('hide');
 }
 
