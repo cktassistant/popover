@@ -5,7 +5,7 @@ import CopyText from '../copy.astro';
 <style>
   @font-face { 
     font-family:'Good Unicorn';
-    src: url('/good-unicorn.ttf') format('truetype');
+    src: url('https://ctat-popover.netlify.app/good-unicorn.ttf') format('truetype');
     font-display: swap;
   }
   /* latin-ext */
@@ -176,6 +176,9 @@ import CopyText from '../copy.astro';
   .soon-heading {
     font-size: clamp(2.5rem, 6vw, 3.5rem);
   }
+  .meet-heading {
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+  }
   .CKT-portrait {
     border-radius: 5rem 5rem 0 0;
     max-width: 80%;
@@ -183,6 +186,7 @@ import CopyText from '../copy.astro';
     display: block;
     margin-inline: auto;
     box-shadow: 0 2px 7px #00000033;
+    margin-bottom: 0.5rem;
   }
   @media (min-width: 650px) {
     .CKT-portrait {
@@ -195,6 +199,7 @@ import CopyText from '../copy.astro';
     grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
     max-width: 580px;
     margin-inline: auto;
+    margin-top: clamp(1.5rem, 4vw, 3rem);
   }
   .flipbook img:first-child {
     border-radius: 4px 4px 0 0;
@@ -238,8 +243,8 @@ import CopyText from '../copy.astro';
         </h2>
 
         <div class="cover">
-          <img src="/Ammus-Treasures-cover.webp" alt="Chandrika & Ammu">
-          <img src="/CKT-Ammu.webp" alt="Ammu's Treasures Cover">
+          <img src="https://ctat-popover.netlify.app/Ammus-Treasures-cover.webp" alt="Chandrika & Ammu">
+          <img src="https://ctat-popover.netlify.app/CKT-Ammu.webp" alt="Ammu's Treasures Cover">
         </div>
         <div class="intro">
           <span class="heading">coming Summer, 2023</span>
@@ -250,27 +255,27 @@ import CopyText from '../copy.astro';
 
         <div class="body-text">
 
-          <img class="ammu" src="/ammu-2.webp" alt="Ammu" loading="lazy">
+          <img class="ammu" src="https://ctat-popover.netlify.app/ammu-2.webp" alt="Ammu" loading="lazy">
 
-          <p>Ammu is a delicious term of endearment used in many part's of India. Literally, Ammu means happiness . Ammu means sweetness. Ammu means purity. Ammu is what Chandrika's grandchildren call her.</p>
+          <p>Ammu is a delicious term of endearment used in many parts of India. Literally, Ammu means happiness. Ammu means sweetness. Ammu means purity. Ammu is what Chandrika's grandchildren call her.</p>
 
-          <p>Inspired by constantly singing to her grandchildren, Chandrika Tandon's Ammu's Treasures is a gift of intergenerational love and wisdom, with profound messages for everyday living.</p>
+          <p>Inspired by constantly singing to her grandchildren, Chandrika Tandon's <em>Ammu's Treasures</em> is a gift of intergenerational love and wisdom, with profound messages for everyday living.</p>
 
-          <p> A three-volume omnibus of 35 songs and 21 chants, Ammu's Treasures invites its listeners to reminisce or make new memories with traditional folktunes and familiar popular songs and poems, which were a part of Chandrika's childhood years. These songs speak of faraway places, in different genres and languages, with varied arrangements. They are meant for quiet times, happy times, and any time. This treasury of music also includes ancient Vedic chants set to Indian scales, aimed to soothe and relax.
+          <p> A three-volume omnibus of 35 songs and 21 chants, <em>Ammu's Treasures</em> invites its listeners to reminisce or make new memories with traditional folktunes and familiar popular songs and poems, which were a part of Chandrika's childhood years. These songs speak of faraway places, in different genres and languages, with varied arrangements. They are meant for quiet times, happy times, and any time. This treasury of music also includes ancient Vedic chants set to Indian scales, aimed to soothe and relax.
           </p>
           
-          <p>Adding their incredible artistry to complex arrangements, Ammu's Treasures features many maestros, including Cyro Baptista, Martin Bejerano, Purbayan Chatterjee, Rakesh Chaurasia, Béla Fleck, Eugene Friesen, Maeve Gilchrist, Jamey Haddad, Bobbie Keyes, Howard Levy, Romero Lubambo, Marcus Rojas, Dave Schroeder, Michael WardBergeman, Kenny Werner, the Czech National Symphony Orchestra, Teese Gohl, Mirek Vana, John Kiehl, Scott Cannizarro, and more. Marc Lumer and Bob Spang contributed their talents to beautiful accompanying lyric videos.</p>
+          <p>Adding their incredible artistry to complex arrangements, <em>Ammu's Treasures</em> features many maestros, including Cyro Baptista, Martin Bejerano, Purbayan Chatterjee, Rakesh Chaurasia, Béla Fleck, Eugene Friesen, Maeve Gilchrist, Jamey Haddad, Bobbie Keyes, Howard Levy, Romero Lubambo, Marcus Rojas, Dave Schroeder, Michael WardBergeman, Kenny Werner, the Czech National Symphony Orchestra, Teese Gohl, Mirek Vana, John Kiehl, Scott Cannizarro, and more. Marc Lumer and Bob Spang contributed their talents to beautiful accompanying lyric videos.</p>
 
-          <p>Ammu's Treasures is a hug for the world, a message of Love, Light, Laughter for all ages.</p>
+          <p><em>Ammu's Treasures</em> is a hug for the world, a message of Love, Light, Laughter for all ages.</p>
         </div>
 
         <h2 class="meet-heading">Meet Chandrika Tandon</h2>
 
         <div class="body-text">
 
-          <img class="CKT-portrait" src="/CKT-portrait.webp" alt="" loading="lazy">
+          <img class="CKT-portrait" src="https://ctat-popover.netlify.app/CKT-portrait.webp" alt="" loading="lazy">
 
-          <p>Chandrika is a Grammy-nominated artist and globally recognized business leader with a stated mission to elevate human happiness through music and education - for economic and emotional well -being.</p>
+          <p>Chandrika is a Grammy-nominated artist and globally recognized business leader with a stated mission to elevate human happiness through music and education - for economic and emotional well-being.</p>
 
           <p>She has previously released four albums (<em>Shivoham - The Quest, Soul Call, Soul March, Soul Mantra</em>) and conducted numerous benefit concerts on world stages for global peace, meditation, and yoga in schools, focused on the ancient wisdom of India and her own journey. She supports several efforts on human flourishing.</p>
 
@@ -280,8 +285,8 @@ import CopyText from '../copy.astro';
         <h2 class="soon-heading">Soon, visit Ammu's world</h2>
 
         <div class="flipbook">
-          <img src="/flipbook-1.webp" alt="" loading="lazy">
-          <img src="/flipbook-2.webp" alt="" loading="lazy">
+          <img src="https://ctat-popover.netlify.app/flipbook-1.webp" alt="" loading="lazy">
+          <img src="https://ctat-popover.netlify.app/flipbook-2.webp" alt="" loading="lazy">
         </div>
 
       </div>

@@ -18,7 +18,9 @@ const closeOnEscape = (e) => {
 const closeDialog = () => {
   document.body.style.position = '';
   document.body.style.width = '';
-  document.querySelector('.popover-overlay').classList.add('hide');
+  const overlay = document.querySelector('.popover-overlay');
+  overlay.classList.add('hide');
+  overlay.addEventListener('transitionend', () => document.body.removeChild(overlay));
 }
 
 document.querySelector('.popover-close').addEventListener('click', closeDialog)
